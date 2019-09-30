@@ -26,6 +26,6 @@ def goAgain():
         goAgain = True
         return goAgain
     elif goAgainAnswer == 2:
-        print("Exiting!")
+        print("Goodbye!")
         goAgain = False
         return goAgain
