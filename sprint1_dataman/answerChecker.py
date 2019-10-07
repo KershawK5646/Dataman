@@ -71,8 +71,6 @@ def answerChecker():
         num1 = random.randint(1,problemRange)
         num2 = random.randint(1,problemRange)
 
-answerChecker()
-
-
-    
+if __name__ == '__main__':
+	answerChecker()    
 

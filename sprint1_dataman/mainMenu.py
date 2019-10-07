@@ -57,8 +57,6 @@ def main():
         
         # Ask the user if they want to repeat the program
         goAgain = dmUtil.goAgain()
-    
-    
 
-
-main()
+if __name__ == '__main__':
+	main()
