@@ -6,12 +6,11 @@ Answer Checker:
     given praise. If the user enters an incorrect answer, they will be
     instructed to try again until they get it right.
 
-    Comment
 """
 
 
 import random
-# import dataManUtil as dmUtil
+import dataManUtil as dmUtil
 
 def answerChecker():
     print("DATAMAN Problem Checker")
@@ -41,15 +40,9 @@ def answerChecker():
             solution = num1 * num2
             print(num1," x ",num2," = ? ")
 
-        #Comment blocking division because depending on the numbers chosen it can be cause problems 
-        # elif problemType == 3:
-            #print(num1," / ",num2," = ? ")
-
         while correctAnswer == False:
-            choice = input("What is the answer? (skip and exit are also accepted answers): ");
-            if choice == "skip": choice = 99999
-            if choice == "exit": choice = 99998
-            choice = int(choice)
+            print("What is the answer? \n[101: Skip problem | 102: Exit] ");
+            choice = dmUtil.getUserInput()            
             
             if choice == solution:
                 solved+=1
@@ -57,16 +50,17 @@ def answerChecker():
                 print("Goodjob!\n")
                 correctAnswer = True
                 
-            elif choice == 99999:
-                print("Skipped\n")
+            elif choice == 101:
+                print("Skipped! Correct answers reset.\n")
+                solved = 0
                 correctAnswer = True 
                 
-            elif choice == 99998:
+            elif choice == 102:
                 correctAnswer = True
                 progRun = False
                 
             elif choice != solution:
-                print("Incorrect! Try again\n")    
+                print("Incorrect! Try again.\n")    
  
         num1 = random.randint(1,problemRange)
         num2 = random.randint(1,problemRange)

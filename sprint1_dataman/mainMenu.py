@@ -47,7 +47,7 @@ def main():
         
         if menuSelection == 1:
             # AnswerChecker
-            x=1
+            answerChecker.answerChecker()
         if menuSelection == 2:
             # MemoryBank
             x=1
