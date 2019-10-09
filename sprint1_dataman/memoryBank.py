@@ -41,7 +41,7 @@ def createCards():
 
 def useCards():
     # user is given previously input math problems
-    # and score correct:incorrect answers
+    # and their score
     cards = json.load(open('cards.txt','r'))
     correct = 0
     incorrect = 0
