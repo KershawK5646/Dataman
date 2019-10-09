@@ -50,7 +50,7 @@ def main():
             answerChecker.answerChecker()
         if menuSelection == 2:
             # MemoryBank
-            x=1
+            memoryBank.memoryBank()
         if menuSelection == 3:
             # Guess the Number
             guessTheNumber.guessTheNumberGame()
