@@ -18,7 +18,7 @@ def memoryBank():
     elif choice == 2:
         useCards()
     else:
-        print("Error...")
+        print("Invalid option. Try again.")
         memoryBank()
 
 def createCards():
