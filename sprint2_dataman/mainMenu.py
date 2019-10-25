@@ -9,7 +9,7 @@ Dataman Menu:
 # Imports
 import dataManUtil as dmUtil
 import answerChecker
-import PopQuiz
+import popQuiz
 import guessTheNumber
 
 # Intro
@@ -50,7 +50,7 @@ def main():
             answerChecker.answerChecker()
         if menuSelection == 2:
             # MemoryBank
-            memoryBank.memoryBank()
+            popQuiz.popQuiz()
         if menuSelection == 3:
             # Guess the Number
             guessTheNumber.guessTheNumberGame()
