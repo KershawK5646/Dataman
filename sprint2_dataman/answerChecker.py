@@ -6,6 +6,8 @@ Answer Checker:
     given praise. If the user enters an incorrect answer, they will be
     instructed to try again until they get it right.
 
+    ## Needs to be updated
+
 """
 
 
@@ -14,57 +16,99 @@ import dataManUtil as dmUtil
 
 def answerChecker():
     print("DATAMAN Problem Checker")
+    progRun = True #Program loop
 
-    problemRange = 10 #Sets a range for the numbers involved in the problems
-    solved = 0 #Counter for correct answers
-    progRun = True #Keeps the program running
-    
-    num1 = random.randint(0,problemRange) #First number in the problem
-    num2 = random.randint(0,problemRange) #Second number in the problem
+    while progRun == True:
 
-    while progRun == True: 
+        print("Let's check your math!")
+        print("What kind of problem is it? \n1.+ \n2.- \n3.x \n4.Exit")
 
-        correctAnswer = False #Checks if problem was solved right
+        choice = dmUtil.getUserInput()
 
-        problemType = random.randint(1,3) #Rolls a number that will determine the problem type
 
-        if problemType == 1:
-            solution = num1 + num2
-            print(num1," + ",num2," = ? ")  
-            
-        elif problemType == 2:
-            solution = num1 - num2
-            print(num1," - ",num2," = ? ")
-            
+        if choice == 1:
+            doAddProblem()
+
+        elif choice == 2:
+            doSubProblem()
+
+        elif choice == 3:
+            doMulProblem()
+
+        elif choice == 4:
+            progRun = False;
+
         else:
-            solution = num1 * num2
-            print(num1," x ",num2," = ? ")
+            print("Enter a valid option!")
 
-        while correctAnswer == False:
-            print("What is the answer? \n[101: Skip problem | 102: Exit] ");
-            choice = dmUtil.getUserInput()            
+
+def doAddProblem():
+    correctAnswer = False
+    
+    print("\n[] + []")
+    num1 = dmUtil.getUserInput()
+    print("\n", num1," + []")
+    num2 = dmUtil.getUserInput()
+    print("\n", num1," + ", num2)
+
+    answer = num1 + num2
+
+    while correctAnswer == False:
+        print("What is the answer?")
+        checkAnswer = dmUtil.getUserInput()
+
+        if answer == checkAnswer:
+              print("\nCorrect! Try another problem!\n")
+              correctAnswer = True
+        else:
+            print("\nIncorrect! Try again!\n")
+
+def doSubProblem():
+    correctAnswer = False
+    
+    print("\n[] - []")
+    num1 = dmUtil.getUserInput()
+    print("\n", num1," - []")
+    num2 = dmUtil.getUserInput()
+    print("\n", num1," - ", num2)
+
+    answer = num1 - num2
+
+    while correctAnswer == False:
+        print("What is the answer?")
+        checkAnswer = dmUtil.getUserInput()
+
+        if answer == checkAnswer:
+              print("\nCorrect! Try another problem!\n")
+              correctAnswer = True
+        else:
+            print("\nIncorrect! Try again!\n")
+
+def doMulProblem():
+    correctAnswer = False
+    
+    print("\n[] x []")
+    num1 = dmUtil.getUserInput()
+    print("\n", num1," x []")
+    num2 = dmUtil.getUserInput()
+    print("\n", num1," x ", num2)
+
+    answer = num1 * num2
+
+    while correctAnswer == False:
+        print("What is the answer?")
+        checkAnswer = dmUtil.getUserInput()
+
+        if answer == checkAnswer:
+              print("\nCorrect! Try another problem!\n")
+              correctAnswer = True
+        else:
+            print("\nIncorrect! Try again!\n")
+
             
-            if choice == solution:
-                solved+=1
-                print("Correct! You have answered",solved,"problems correctly!")
-                print("Goodjob!\n")
-                correctAnswer = True
-                
-            elif choice == 101:
-                print("Skipped! Correct answers reset.\n")
-                solved = 0
-                correctAnswer = True 
-                
-            elif choice == 102:
-                correctAnswer = True
-                progRun = False
-                
-            elif choice != solution:
-                print("Incorrect! Try again.\n")    
- 
-        num1 = random.randint(1,problemRange)
-        num2 = random.randint(1,problemRange)
 
 if __name__ == '__main__':
 	answerChecker()    
+        
 
+        
