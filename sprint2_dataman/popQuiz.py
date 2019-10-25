@@ -9,7 +9,7 @@ PopQuiz:
 import json
 import dataManUtil as dmUtil
 
-def memoryBank():
+def popQuiz():
     print("DATAMAN Pop Quiz")
     print("\n1. Create \n2. Study")
     choice = dmUtil.getUserInput()
@@ -19,7 +19,7 @@ def memoryBank():
         useCards()
     else:
         print("Invalid option. Try again.")
-        memoryBank()
+        popQuiz()
 
 def createCards():
     # create array of user input math problems
@@ -37,7 +37,7 @@ def createCards():
     # and '4' will be the value
     json.dump(cards, open('cards.csv','w'))
     print(cards) # for now, this verifies the user made the cards correctly
-    memoryBank()
+    popQuiz()
 
 def useCards():
     # user is given previously input math problems
@@ -75,4 +75,4 @@ def useCards():
         print("Score:",score,'%')
         
 if __name__ == '__main__':
-    memoryBank()
+    popQuiz()
