@@ -9,7 +9,7 @@ Dataman Menu:
 # Imports
 import dataManUtil as dmUtil
 import answerChecker
-import memoryBank
+import PopQuiz
 import guessTheNumber
 
 # Intro
