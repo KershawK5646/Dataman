@@ -24,7 +24,7 @@ def intro():
 def selection():
     # This displays the users options to them.
     print("Please make a selection from the following: ")
-    print("1. Answer Checker. \n2. Memory Bank. \n3. Guess the Number.")
+    print("1. Answer Checker. \n2. Pop Quiz. \n3. Guess the Number.")
     
 
 # Main
