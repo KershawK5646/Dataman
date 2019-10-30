@@ -11,12 +11,14 @@ import dataManUtil as dmUtil
 
 def popQuiz():
     print("DATAMAN Pop Quiz")
-    print("\n1. Create \n2. Study")
+    print("\n1. Create \n2. Study \n3. Exit")
     choice = dmUtil.getUserInput()
     if choice == 1:
         createCards()
     elif choice == 2:
         useCards()
+    elif choice == 3:
+        print("Returning to Main Menu...")
     else:
         print("Invalid option. Try again.")
         popQuiz()
@@ -73,6 +75,17 @@ def useCards():
     else:
         print("Better luck next time!")
         print("Score:",score,'%')
-        
+    again()
+
+def again():
+    print("Would you like to study the same cards again?")
+    print("\n1. Yes \n2. No")
+    choice = dmUtil.getUserInput()
+    if choice == 1:
+        useCards()
+    elif choice == 2:
+        print("Returning...")
+        popQuiz()
+
 if __name__ == '__main__':
     popQuiz()
