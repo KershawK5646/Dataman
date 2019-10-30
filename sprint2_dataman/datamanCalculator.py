@@ -74,9 +74,7 @@ def doMulProblem():
 
     answer = num1 * num2
 
-    print("\n", num1," x ", num2, " = ", answer, "\n")
-
-         
+    print("\n", num1," x ", num2, " = ", answer, "\n")      
 
 if __name__ == '__main__':
 	datamanCalculator()    
