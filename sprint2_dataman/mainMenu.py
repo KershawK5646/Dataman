@@ -25,8 +25,7 @@ def intro():
 def selection():
     # This displays the users options to them.
     print("Please make a selection from the following: ")
-    print("1. Answer Checker. \n2. Pop Quiz. \n3. Guess the Number. \n4. Calculator")
-    
+    print("1. Answer Checker. \n2. Pop Quiz. \n3. Guess the Number. \n4. Calculator \n5. Exit")    
 
 # Main
 def main():
@@ -40,8 +39,8 @@ def main():
         
         # Get user menu selection
         menuSelection = dmUtil.getUserInput()
-        
-        while menuSelection >4 or menuSelection <1:
+
+        while menuSelection >5 or menuSelection <1:
             print("Entered number out of bounds. Please enter a number within range.")
             selection()
             menuSelection = dmUtil.getUserInput()
@@ -58,6 +57,10 @@ def main():
         if menuSelection == 4:
             # Dataman Calculator
             datamanCalculator.datamanCalculator()
+        if menuSelection == 5:
+            # Exits the program
+            print("Goodbye!")
+            break          
         
         # Ask the user if they want to repeat the program
         goAgain = dmUtil.goAgain()

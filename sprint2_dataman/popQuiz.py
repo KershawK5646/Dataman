@@ -13,12 +13,13 @@ def popQuiz():
     print("DATAMAN Pop Quiz")
     print("\n1. Create \n2. Study \n3. Exit")
     choice = dmUtil.getUserInput()
+
     if choice == 1:
         createCards()
     elif choice == 2:
         useCards()
     elif choice == 3:
-        print("Returning to Main Menu...")
+        print("Returning...")
     else:
         print("Invalid option. Try again.")
         popQuiz()
@@ -49,10 +50,12 @@ def useCards():
     incorrect = 0
     total = 0
     print("Ready? Go!")
+    
     for key in cards:
         print(key)
         print("Answer: ")
         guess = dmUtil.getUserInput()
+
         if str(guess) == cards[key]:
             print("Correct!")
             correct += 1
@@ -61,8 +64,10 @@ def useCards():
             print("Incorrect!")
             incorrect += 1
             total += 1
+
     score = (correct / total) * 100
     print("Correct: ",correct,"Incorrect: ",incorrect)
+
     if score > 90:
         print("Great job!")
         print("Score:",score,'%')
@@ -75,12 +80,14 @@ def useCards():
     else:
         print("Better luck next time!")
         print("Score:",score,'%')
+
     again()
 
 def again():
     print("Would you like to study the same cards again?")
     print("\n1. Yes \n2. No")
     choice = dmUtil.getUserInput()
+    
     if choice == 1:
         useCards()
     elif choice == 2:
