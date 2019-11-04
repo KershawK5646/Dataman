@@ -14,34 +14,60 @@ def popQuiz():
     # Bool to control game state
     gameLoop = True
     print("DATAMAN Pop Quiz")
-    while gameLoop = True:
+    while gameLoop == True:
         # Generatr randoms needed for numbers and operator
         number1 = getRandomNumber()
         number2 = getRandomNumber()
         operator = getRandomOperator()
         
-        # Propose the question
-        #questionPropt(number1 + " " + operator + " " number2 + "= :")
+        # Assign string values for operator
+        if operator == 0:
+            operatorChar = "+"
+            questionPrompt = str(number1)+" "+operatorChar+" "+str(number2)+" = "
+            answer = number1 + number2
         
-        #print(questionPrompt)
+        elif operator == 1:
+            operatorChar = "-"
+            questionPrompt = str(number1)+" "+operatorChar+" "+str(number2)+" = "
+            answer = number1 - number2
+        
+        else:
+            operatorChar = "X"
+            questionPrompt = str(number1)+" "+operatorChar+" "+str(number2)+" = "
+            answer = number1 * number2
+        
+        
+        print(questionPrompt)
+        userAnswer = dmUtil.getUserInput()
+        while userAnswer != answer:
+            print("Not quite...Try again!")
+            print(questionPrompt)
+            userAnswer = dmUtil.getUserInput()
+        
+        print("That's right!")
+        print(questionPrompt, answer)
         
         # Go again question
         gameLoop = again()
     
 # Generate and return a random number
 def getRandomNumber():
-    randomNumber = randint(0,10)
-    print(randomNumber)
+    randomNumber = random.randint(0,10)
+    # Test print
+    #print(randomNumber)
     return randomNumber
 
 # Use a random number to get a random operator
 def getRandomOperator():
-    operatorSelection = randint(0,2)
-    print(operatorSelector)
+    operatorSelection = random.randint(0,2)
+    # Test print
+    # print(operatorSelection)
+    return operatorSelection
+    
     
 # Go again function
 def again():
-    print("Would you like to study the same cards again?")
+    print("Would you like to do another one?")
     print("\n1. Yes \n2. No")
     choice = dmUtil.getUserInput()
     
