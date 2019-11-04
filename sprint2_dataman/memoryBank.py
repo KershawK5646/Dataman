@@ -11,12 +11,14 @@ import dataManUtil as dmUtil
 
 def memoryBank():
     print("DATAMAN Memory Bank")
-    print("\n1. Create \n2. Study")
+    print("\n1. Create \n2. Study \n3. Exit")
     choice = dmUtil.getUserInput()
     if choice == 1:
         createCards()
     elif choice == 2:
         useCards()
+    elif choice == 3:
+        print("Exiting...")
     else:
         print("Invalid option. Try again.")
         memoryBank()
