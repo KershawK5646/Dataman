@@ -12,6 +12,7 @@ import answerChecker
 import popQuiz
 import guessTheNumber
 import datamanCalculator
+import memoryBank
 
 # Intro
 def intro():
