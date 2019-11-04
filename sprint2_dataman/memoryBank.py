@@ -8,40 +8,79 @@ MemoryBank:
 
 import json
 import dataManUtil as dmUtil
+cards = {}
 
 def memoryBank():
     print("DATAMAN Memory Bank")
     print("\n1. Create \n2. Study \n3. Exit")
     choice = dmUtil.getUserInput()
     if choice == 1:
-        createCards()
+        createCards(cards)
     elif choice == 2:
-        useCards()
+        print("UNDER CONSTRUCTION!!! \nComing soon...")
+        # useCards(cards)
+        memoryBank()
     elif choice == 3:
-        print("Exiting...")
+        print("Returning...")
     else:
         print("Invalid option. Try again.")
         memoryBank()
 
-def createCards():
-    # create array of user input math problems
-    # for user to solve
+def createCards(cards):
+    # creates .csv file 'deck' of cards
     print("Let's make some flashcards.")
     print("How many cards?")
     count = dmUtil.getUserInput()
-    # number of flashcards is set given by user
-    print("Type the problem, hit the spacebar, type the answer, and then hit enter.")
-    cards = dict(input().split() for _ in range(count))
-    # this creates a dictionary using user input
-    # user can input problem, then a space, and then the correct answer
-    # example: '2+2' ``space key`` '4'
-    # this will be put into dictionary with '2+2' as the key
-    # and '4' will be the value
+    cardChoice(count, cards)
     json.dump(cards, open('cards.csv','w'))
-    print(cards) # for now, this verifies the user made the cards correctly
+    print(cards) # visual verification of cards
     memoryBank()
 
-def useCards():
+def cardChoice(count, cards):
+    for i in range(count):
+        print("For this card, choose an operator: \n1. + \n2. - \n3. *")
+        choice = dmUtil.getUserInput()
+        if choice == 1:
+            add(cards)
+            i += i
+        elif choice == 2:
+            sub()
+            i += i
+        elif choice == 3:
+            mul()
+            i += i
+        else:
+            print("Invalid option. Try again.")
+            cardChoice(count, cards)
+
+def add(cards):
+    print("\n[] + []")
+    num1 = dmUtil.getUserInput()
+    print("\n", num1," + []")
+    num2 = dmUtil.getUserInput()
+    print("\n", num1," + ", num2)
+    problem = "{0}+{1}".format(num1, num2)
+    answer = num1 + num2
+    cards[problem] = answer
+    return cards
+
+def sub():
+    print("\n[] - []")
+    num1 = dmUtil.getUserInput()
+    print("\n", num1," - []")
+    num2 = dmUtil.getUserInput()
+    print("\n", num1," - ", num2)
+    answer = num1 - num2
+
+def mul():
+    print("\n[] * []")
+    num1 = dmUtil.getUserInput()
+    print("\n", num1," * []")
+    num2 = dmUtil.getUserInput()
+    print("\n", num1," * ", num2)
+    answer = num1 * num2
+
+def useCards(cards):
     # user is given previously input math problems
     # and their score
     cards = json.load(open('cards.csv','r'))
@@ -49,10 +88,12 @@ def useCards():
     incorrect = 0
     total = 0
     print("Ready? Go!")
+    
     for key in cards:
         print(key)
         print("Answer: ")
         guess = dmUtil.getUserInput()
+
         if str(guess) == cards[key]:
             print("Correct!")
             correct += 1
@@ -61,8 +102,10 @@ def useCards():
             print("Incorrect!")
             incorrect += 1
             total += 1
+
     score = (correct / total) * 100
     print("Correct: ",correct,"Incorrect: ",incorrect)
+
     if score > 90:
         print("Great job!")
         print("Score:",score,'%')
@@ -75,6 +118,19 @@ def useCards():
     else:
         print("Better luck next time!")
         print("Score:",score,'%')
+
+    again()
+
+def again():
+    print("Would you like to study the same cards again?")
+    print("\n1. Yes \n2. No")
+    choice = dmUtil.getUserInput()
+    
+    if choice == 1:
+        useCards()
+    elif choice == 2:
+        print("Returning...")
+        memoryBank()
         
 if __name__ == '__main__':
     memoryBank()
