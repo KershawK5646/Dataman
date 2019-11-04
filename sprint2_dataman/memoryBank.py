@@ -35,14 +35,14 @@ def createCards():
     # example: '2+2' ``space key`` '4'
     # this will be put into dictionary with '2+2' as the key
     # and '4' will be the value
-    json.dump(cards, open('cards.txt','w'))
+    json.dump(cards, open('cards.csv','w'))
     print(cards) # for now, this verifies the user made the cards correctly
     memoryBank()
 
 def useCards():
     # user is given previously input math problems
     # and their score
-    cards = json.load(open('cards.txt','r'))
+    cards = json.load(open('cards.csv','r'))
     correct = 0
     incorrect = 0
     total = 0
