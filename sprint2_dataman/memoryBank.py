@@ -11,45 +11,56 @@ import dataManUtil as dmUtil
 cards = {}
 
 def memoryBank():
+    print()
     print("DATAMAN Memory Bank")
     print("\n1. Create \n2. Study \n3. Exit")
     choice = dmUtil.getUserInput()
+
     if choice == 1:
         createCards(cards)
     elif choice == 2:
-        print("UNDER CONSTRUCTION!!! \nComing soon...")
-        # useCards(cards)
+        useCards(cards)
         memoryBank()
     elif choice == 3:
-        print("Returning...")
+        print()
+        print("Exiting...")
+        # if you only exit, this will run properly.
+        # if you create or study and then attempt to exit,
+        # you will have to exit twice, for some reason...
     else:
+        print()
         print("Invalid option. Try again.")
         memoryBank()
 
 def createCards(cards):
     # creates .csv file 'deck' of cards
+    print()
     print("Let's make some flashcards.")
     print("How many cards?")
     count = dmUtil.getUserInput()
+    print()
     cardChoice(count, cards)
     json.dump(cards, open('cards.csv','w'))
-    print(cards) # visual verification of cards
+    print("Your deck so far: {0}".format(cards)) # visual verification of cards
     memoryBank()
 
 def cardChoice(count, cards):
     for i in range(count):
         print("For this card, choose an operator: \n1. + \n2. - \n3. *")
         choice = dmUtil.getUserInput()
+        print("Choice was {0}".format(choice))
+
         if choice == 1:
             add(cards)
             i += i
         elif choice == 2:
-            sub()
+            sub(cards)
             i += i
         elif choice == 3:
-            mul()
+            mul(cards)
             i += i
         else:
+            print()
             print("Invalid option. Try again.")
             cardChoice(count, cards)
 
@@ -61,24 +72,30 @@ def add(cards):
     print("\n", num1," + ", num2)
     problem = "{0}+{1}".format(num1, num2)
     answer = num1 + num2
-    cards[problem] = answer
+    cards[problem] = str(answer)
     return cards
 
-def sub():
+def sub(cards):
     print("\n[] - []")
     num1 = dmUtil.getUserInput()
     print("\n", num1," - []")
     num2 = dmUtil.getUserInput()
     print("\n", num1," - ", num2)
+    problem = "{0}-{1}".format(num1, num2)
     answer = num1 - num2
+    cards[problem] = str(answer)
+    return cards    
 
-def mul():
+def mul(cards):
     print("\n[] * []")
     num1 = dmUtil.getUserInput()
     print("\n", num1," * []")
     num2 = dmUtil.getUserInput()
     print("\n", num1," * ", num2)
+    problem = "{0}*{1}".format(num1, num2)
     answer = num1 * num2
+    cards[problem] = str(answer)
+    return cards
 
 def useCards(cards):
     # user is given previously input math problems
@@ -87,6 +104,7 @@ def useCards(cards):
     correct = 0
     incorrect = 0
     total = 0
+    print()
     print("Ready? Go!")
     
     for key in cards:
@@ -95,15 +113,18 @@ def useCards(cards):
         guess = dmUtil.getUserInput()
 
         if str(guess) == cards[key]:
+            print()
             print("Correct!")
             correct += 1
             total += 1
         else:
+            print()
             print("Incorrect!")
             incorrect += 1
             total += 1
 
     score = (correct / total) * 100
+    print()
     print("Correct: ",correct,"Incorrect: ",incorrect)
 
     if score > 90:
@@ -127,7 +148,7 @@ def again():
     choice = dmUtil.getUserInput()
     
     if choice == 1:
-        useCards()
+        useCards(cards)
     elif choice == 2:
         print("Returning...")
         memoryBank()
