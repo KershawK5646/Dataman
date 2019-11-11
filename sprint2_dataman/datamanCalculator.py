@@ -12,7 +12,10 @@ import random
 import dataManUtil as dmUtil
 
 def datamanCalculator():
+    dmUtil.returnKey()
+    print("==================")
     print("DATAMAN Calculator")
+    print("==================")
     progRun = True #Program loop
 
     while progRun == True:

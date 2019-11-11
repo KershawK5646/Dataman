@@ -11,9 +11,12 @@ import random
 
 # Main loop
 def popQuiz():
+    dmUtil.returnKey()
     # Bool to control game state
     gameLoop = True
+    print("================")
     print("DATAMAN Pop Quiz")
+    print("================")
     while gameLoop == True:
         # Generatr randoms needed for numbers and operator
         number1 = getRandomNumber()
@@ -35,6 +38,7 @@ def popQuiz():
             operatorChar = "X"
             questionPrompt = str(number1)+" "+operatorChar+" "+str(number2)+" = "
             answer = number1 * number2
+
         
         
         print(questionPrompt)
@@ -43,9 +47,11 @@ def popQuiz():
             print("Not quite...Try again!")
             print(questionPrompt)
             userAnswer = dmUtil.getUserInput()
-        
+            
+        dmUtil.returnKey()
         print("That's right!")
         print(questionPrompt, answer)
+
         
         # Go again question
         gameLoop = again()
@@ -67,9 +73,10 @@ def getRandomOperator():
     
 # Go again function
 def again():
-    print("Would you like to do another one?")
-    print("\n1. Yes \n2. No")
+    print("\nWould you like to do another one?")
+    print("1. Yes \n2. No")
     choice = dmUtil.getUserInput()
+    dmUtil.returnKey()
     
     # Repeat selection
     if choice == 1:
@@ -77,6 +84,7 @@ def again():
     # Quit selection
     elif choice == 2:
         return False
+    
 
 if __name__ == '__main__':
     popQuiz()

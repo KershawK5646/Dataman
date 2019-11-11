@@ -12,6 +12,11 @@ import random
 import dataManUtil as dmUtil
 
 def guessTheNumberGame():
+    dmUtil.returnKey()
+    print("===================")
+    print("DATAMAN Number Game")
+    print("===================")
+    
     # Create random number
     randomNumber = random.randint(1,100)
     # Create a counter for the number of guesses.
@@ -29,10 +34,13 @@ def guessTheNumberGame():
         
         # Evaluate the user guess.
         if userNumber > randomNumber:
+            dmUtil.returnKey()
             print("Too high... Try again!")
         elif userNumber < randomNumber:
+            dmUtil.returnKey()
             print("Too Low... Try again!")
         else:
+            dmUtil.returnKey()
             print("That's right! You guessed ", randomNumber, "in only ",
                   guessCounter, "tries!")
             # Set the game over controller to end the loop

@@ -11,8 +11,10 @@ import dataManUtil as dmUtil
 cards = {}
 
 def memoryBank():
-    print()
+    print("")
+    print("===================")
     print("DATAMAN Memory Bank")
+    print("===================")
     print("\n1. Create \n2. Study \n3. Exit")
     choice = dmUtil.getUserInput()
 

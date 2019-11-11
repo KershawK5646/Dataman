@@ -20,8 +20,7 @@ def intro():
     print("=================")
     print("=====DATAMAN=====")
     print("=================")
-    print("\n")
-    
+      
 # Selection
 def selection():
     # This displays the users options to them.

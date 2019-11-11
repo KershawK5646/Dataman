@@ -15,7 +15,10 @@ import random
 import dataManUtil as dmUtil
 
 def answerChecker():
+    dmUtil.returnKey()
+    print("=======================")
     print("DATAMAN Problem Checker")
+    print("=======================")
     progRun = True #Program loop
 
     while progRun == True:

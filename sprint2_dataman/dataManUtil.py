@@ -14,7 +14,7 @@ def getUserInput():
             print("That was not a number. Please enter a number.")
             
 def goAgain():
-    print("Would you like to return to the main menu? \n1. Yes \n2. No")
+    print("\nWould you like to return to the main menu? \n1. Yes \n2. No")
     goAgainAnswer = getUserInput()
     
     while goAgainAnswer >2 or goAgainAnswer <1:
@@ -22,10 +22,13 @@ def goAgain():
         goAgainAnswer = getUserInput()
     
     if goAgainAnswer == 1:
-        print("Returning...")
+        print("Returning...\n")
         goAgain = True
         return goAgain
     elif goAgainAnswer == 2:
         print("Goodbye!")
         goAgain = False
         return goAgain
+
+def returnKey():
+    print("")
