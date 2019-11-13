@@ -1,0 +1,35 @@
+KNOWN ISSUES and FIXES:
+
+	1. As of initial release, only integers (including negative integers)
+	can be used throughout the entirety of the Dataman project. Whenever 
+	user is asked for a number, inputting anything other than an integer 
+	will result in being told to try again. This will not crash the program.
+
+	2. In Memory Bank:
+		
+		a. As of initial release, .csv files cannot be imported due to
+		formatting issues. Please use the Create Deck option to create a deck
+		of cards to be studied later.
+		
+		b. If user creates a deck of zero cards, 
+		and then attempts to study, the program will crash.
+		User will then need to restart the Dataman program by
+		rerunning mainMenu.py if they want to continue.
+
+			***FIXED*** User can now "create" a deck of zero cards.
+
+		c. User cannot remove cards from deck. If user wants to study 
+		created cards and then study different cards, user will have to 
+		exit Dataman entirely and then reenter Memory Bank. Otherwise, using
+		the Create option again will only append new cards to the existing
+		deck. WARNING: Deck is emptied at the start of Memory Bank!
+
+			***FIXED*** User can now delete deck by using Empty Deck option
+				at the main menu.
+
+		d. User cannot create multiples of the same card. If "1+1=2"
+		already exists, it cannot be added again. If user would like to study
+		existing cards multiple times, answer yes when prompted "Would you
+		like to study the same cards again?"
+
+		
