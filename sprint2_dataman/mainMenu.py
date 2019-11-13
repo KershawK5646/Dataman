@@ -56,7 +56,8 @@ def main():
             guessTheNumber.guessTheNumberGame()
         if menuSelection == 4:
             #Memory bank
-            memoryBank.memoryBank()
+            cards = {}
+            memoryBank.memoryBank(cards)
         if menuSelection == 5:
             # Dataman Calculator
             datamanCalculator.datamanCalculator()

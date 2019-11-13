@@ -10,29 +10,27 @@ import json
 import dataManUtil as dmUtil
 cards = {}
 
-def memoryBank():
+def memoryBank(cards):
     print("")
     print("===================")
     print("DATAMAN Memory Bank")
     print("===================")
-    print("\n1. Create \n2. Study \n3. Exit")
+    print("\n1. Create Deck \n2. Study \n3. Empty Deck\n4. Exit")
     choice = dmUtil.getUserInput()
 
     if choice == 1:
         createCards(cards)
     elif choice == 2:
         useCards(cards)
-        memoryBank()
     elif choice == 3:
+        deleteCards(cards)
+    elif choice == 4:
         print()
         print("Exiting...")
-        # if you only exit, this will run properly.
-        # if you create or study and then attempt to exit,
-        # you will have to exit twice, for some reason...
     else:
         print()
         print("Invalid option. Try again.")
-        memoryBank()
+        memoryBank(cards)
 
 def createCards(cards):
     # creates .csv file 'deck' of cards
@@ -43,14 +41,14 @@ def createCards(cards):
     print()
     cardChoice(count, cards)
     json.dump(cards, open('cards.csv','w'))
-    print("Your deck so far: {0}".format(cards)) # visual verification of cards
-    memoryBank()
+    print(f"Your deck so far: {cards}") # visual verification of cards
+    memoryBank(cards)
 
 def cardChoice(count, cards):
     for i in range(count):
         print("For this card, choose an operator: \n1. + \n2. - \n3. *")
         choice = dmUtil.getUserInput()
-        print("Choice was {0}".format(choice))
+        print(f"Choice was {choice}")
 
         if choice == 1:
             add(cards)
@@ -72,7 +70,7 @@ def add(cards):
     print("\n", num1," + []")
     num2 = dmUtil.getUserInput()
     print("\n", num1," + ", num2)
-    problem = "{0}+{1}".format(num1, num2)
+    problem = f"{num1}+{num2}"
     answer = num1 + num2
     cards[problem] = str(answer)
     return cards
@@ -83,7 +81,7 @@ def sub(cards):
     print("\n", num1," - []")
     num2 = dmUtil.getUserInput()
     print("\n", num1," - ", num2)
-    problem = "{0}-{1}".format(num1, num2)
+    problem = f"{num1}-{num2}"
     answer = num1 - num2
     cards[problem] = str(answer)
     return cards    
@@ -94,7 +92,7 @@ def mul(cards):
     print("\n", num1," * []")
     num2 = dmUtil.getUserInput()
     print("\n", num1," * ", num2)
-    problem = "{0}*{1}".format(num1, num2)
+    problem = f"{num1}*{num2}"
     answer = num1 * num2
     cards[problem] = str(answer)
     return cards
@@ -125,22 +123,28 @@ def useCards(cards):
             incorrect += 1
             total += 1
 
-    score = (correct / total) * 100
-    print()
-    print("Correct: ",correct,"Incorrect: ",incorrect)
+    if total > 0:        
+        score = (correct / total) * 100
+        print()
+        print("Correct: ",correct,"Incorrect: ",incorrect)
 
-    if score > 90:
-        print("Great job!")
-        print("Score:",score,'%')
-    elif score > 80:
-        print("Good job!")
-        print("Score:",score,'%')
-    elif score > 60:
-        print("Keep it up!")
-        print("Score:",score,'%')
+        if score > 90:
+            print("Great job!")
+            print("Score:",score,'%')
+        elif score > 80:
+            print("Good job!")
+            print("Score:",score,'%')
+        elif score > 60:
+            print("Keep it up!")
+            print("Score:",score,'%')
+        else:
+            print("Better luck next time!")
+            print("Score:",score,'%')
+
     else:
-        print("Better luck next time!")
-        print("Score:",score,'%')
+        print()
+        print("You can't study an empty deck!")
+        print("Use Create Deck to get started!")
 
     again()
 
@@ -153,7 +157,26 @@ def again():
         useCards(cards)
     elif choice == 2:
         print("Returning...")
-        memoryBank()
+        memoryBank(cards)
+    else:
+        print()
+        print("Invalid option. Try again.")
+
+def deleteCards(cards):
+    print("Are you sure you want to empty your deck?")
+    print("THIS CANNOT BE UNDONE!")
+    print("\n1. Yes \n2. No")
+    choice = dmUtil.getUserInput()
+    if choice == 1:
+        cards = {}
+        json.dump(cards, open('cards.csv','w'))
+        memoryBank(cards)
+    elif choice == 2:
+        print("Whew... close one.")
+        memoryBank(cards)
+    else:
+        print()
+        print("Invalid option. Try again.")
         
 if __name__ == '__main__':
-    memoryBank()
+    memoryBank(cards)
